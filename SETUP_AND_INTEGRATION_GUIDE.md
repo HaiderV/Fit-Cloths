@@ -1,156 +1,327 @@
-# Fit Cloths — Full-Stack Integration & Developer Guide
+# Fit Cloths — Complete Setup & Integration Guide
 
-This document describes the integrated architecture, service orchestration, environment variables, startup procedures, and testing protocols for the Fit Cloths application.
+This guide provides end-to-end instructions for installing, configuring, running, and integrating all services in the **Fit Cloths** project.
 
 ---
 
-## 1. Architecture Overview
+## 1. System Architecture & Component Map
+
+The platform consists of five interconnected microservices and a cloud database:
 
 ```mermaid
-graph LR
-    User[Client Browser] -->|Port 5173| Frontend[Vite + React Frontend]
-    Frontend -->|Port 5001 /api| Express[Express Node.js Backend]
-    Express -->|Supabase Client| Supabase[(Supabase Cloud DB)]
-    Express -->|Port 5000 /api/predict-measurements| Flask[Flask Python AI Service]
-    Flask -->|Port 11434 /api/chat| Ollama[Local Ollama / Gemma 4 Vision]
-    Flask -->|Internal Detector| MediaPipe[MediaPipe Pose Landmarker]
+graph TD
+    User["Client Browser"] -->|Port 5173| Frontend["Frontend (React + Vite)"]
+    Frontend -->|Port 5001 /api| Backend["Backend (Node.js + Express 5)"]
+    Backend -->|Port 8000 /search| RAG["RAG Service (FastAPI)"]
+    Backend -->|Port 5000 /api/predict-measurements| TailorVision["TailorVision AI (Flask + PyTorch)"]
+    Backend -->|Port 11434 /api/chat (SSE Stream)| Ollama["Local LLM (Ollama / Gemma 4)"]
+    RAG -->|RPC search_products (pgvector)| Supabase[("Supabase Cloud Database")]
+    TailorVision -->|In-Memory Model Fitting| CPU[("Local CPU SMPL-X Engine")]
 ```
 
-- **Frontend (`frontend/`)**: React 18, Vite 6, Tailwind CSS, Lucide icons. Runs on `http://localhost:5173`.
-- **Backend (`backend/`)**: Node.js v24, Express 5. Handles CORS, Supabase database queries, multipart image upload validation, and proxies AI measurement requests to Flask. Runs on `http://localhost:5001`.
-- **AI Service (`AI/`)**: Python 3.12 Flask API. Runs on `http://127.0.0.1:5000`. Features:
-  - **Gemma Vision Photo Validator (`gemma_validator.py`)**: Connects to local Ollama (`gemma4:e2b`) to verify full body visibility, single subject, and orientation (`front` vs `right`).
-  - **Proportion Engine (`model.py`)**: `TailoredBodyModel` utilizing MediaPipe Pose Landmarker and OpenCV silhouette extraction to compute Ramanujan 3D circumference ellipses for 15 body measurements.
-- **Database**: Supabase PostgreSQL for product catalogue, categories, and inventory.
+| Service | Port | Directory | Runtime | Function |
+| :--- | :---: | :--- | :--- | :--- |
+| **Frontend** | `5173` | `frontend/` | Node.js 18+ / Vite | Web Storefront, Measurement Studio, GX Drawer |
+| **Backend** | `5001` | `backend/` | Node.js / Express 5 | Gateway, CORS, Multipart Parser, SSE Proxy |
+| **TailorVision** | `5000` | `tailoring-grade_anthropometric_Python_tool/` | Python 3.12 (Venv) | 3D SMPL-X Body Fitting & Slicing |
+| **RAG API** | `8000` | `AI/` | Python 3.12 (Venv) | MiniLM Embeddings & Supabase Vector RPC |
+| **Ollama** | `11434` | System Daemon | Ollama Engine | Gemma 4 2B (`gemma4:e2b`) CPU inference |
+| **Database** | Cloud | External | Supabase PostgreSQL | Product catalog and `pgvector` store |
 
 ---
 
-## 2. Environment Variables & Ports
+## 2. Prerequisites & Toolchain
 
-| Service | Port | Required Env Variables (without secrets) | Config File |
-| :--- | :--- | :--- | :--- |
-| **Vite Frontend** | `5173` | `VITE_API_BASE_URL` | `frontend/.env` |
-| **Express Backend** | `5001` | `PORT`, `FLASK_API_URL`, `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_KEY` | `backend/.env` |
-| **Flask AI Service** | `5000` | `FLASK_PORT`, `FLASK_HOST`, `OLLAMA_URL`, `OLLAMA_MODEL` (optional: `GEMMA_API_KEY`) | `AI/.env` |
-| **Ollama Service** | `11434`| (Internal Ollama runtime daemon) | — |
+Before setting up the project, ensure the following are installed on your machine:
 
-*Note: Express and Flask previously both defaulted to port `5000`. Express was reconfigured to port `5001` to eliminate port collision.*
+1. **Node.js**: `v18.x`, `v20.x`, or `v22.x` (LTS recommended)
+   - Verify: `node -v` and `npm -v`
+2. **Python**: `3.10` to `3.12` (64-bit)
+   - Verify: `python --version`
+3. **Ollama**: Download and install from [ollama.com](https://ollama.com/)
+   - Pull model: `ollama pull gemma4:e2b`
+   - Verify: `ollama list`
+4. **Git**: Installed and configured
+5. **Supabase Account**: An active Supabase project with `pgvector` enabled
 
 ---
 
-## 3. How to Start All Services on Windows PowerShell
+## 3. Environment Variables Configuration
 
-Open separate PowerShell terminals for each service:
+Create the respective `.env` files in each service directory.
 
-### Step 1: Start Ollama (with Gemma 4)
+### A. Root `.env` (Used by FastAPI RAG Service)
+Create `Fit-Cloths/.env`:
+```ini
+SUPABASE_URL=https://your-project-id.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_secret_key
+```
+
+### B. Backend `.env`
+Create `backend/.env`:
+```ini
+PORT=5001
+FLASK_API_URL=http://127.0.0.1:5000
+RAG_API_URL=http://127.0.0.1:8000
+OLLAMA_URL=http://127.0.0.1:11434
+OLLAMA_MODEL=gemma4:e2b
+
+# Supabase Credentials
+SUPABASE_URL=https://your-project-id.supabase.co
+SUPABASE_ANON_KEY=your_supabase_anon_public_key
+SUPABASE_SERVICE_KEY=your_supabase_service_role_secret_key
+```
+
+### C. Frontend `.env`
+Create `frontend/.env`:
+```ini
+VITE_API_BASE_URL=http://localhost:5001
+```
+
+### D. AI Service `.env`
+Create `AI/.env`:
+```ini
+FLASK_PORT=5000
+FLASK_HOST=127.0.0.1
+OLLAMA_URL=http://localhost:11434/api/chat
+OLLAMA_MODEL=gemma4:e2b
+```
+
+---
+
+## 4. Step-by-Step Installation
+
+### Step 4.1: Install Node Dependencies
+Open PowerShell:
+
+```powershell
+# 1. Install Backend Dependencies
+cd c:\Users\haide\OneDrive\Documents\Fit-Cloths\backend
+npm install
+
+# 2. Install Frontend Dependencies
+cd c:\Users\haide\OneDrive\Documents\Fit-Cloths\frontend
+npm install
+```
+
+### Step 4.2: Setup Python Virtual Environments
+
+#### 1. TailorVision Measurement Service
+```powershell
+cd c:\Users\haide\OneDrive\Documents\Fit-Cloths\tailoring-grade_anthropometric_Python_tool
+
+# Create virtualenv if not already created
+python -m venv .venv
+
+# Activate virtualenv
+.\.venv\Scripts\Activate.ps1
+
+# Install requirements
+pip install -r requirements.txt
+```
+
+*Note: Ensure SMPL-X model files exist in `models/smplx/` (`SMPLX_MALE.pkl`, `SMPLX_FEMALE.pkl`, `SMPLX_NEUTRAL.pkl`).*
+
+#### 2. FastAPI RAG Service
+```powershell
+cd c:\Users\haide\OneDrive\Documents\Fit-Cloths\AI
+
+# Create virtualenv if not already created
+python -m venv .venv
+
+# Activate virtualenv
+.\.venv\Scripts\Activate.ps1
+
+# Install requirements
+pip install -r requirements.txt
+```
+
+---
+
+## 5. Supabase Vector Database Setup
+
+If configuring a new Supabase database, execute the following SQL in the Supabase **SQL Editor**:
+
+```sql
+-- 1. Enable the pgvector extension
+CREATE EXTENSION IF NOT EXISTS vector;
+
+-- 2. Create products table
+CREATE TABLE IF NOT EXISTS products (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    product_code TEXT UNIQUE NOT NULL,
+    name TEXT NOT NULL,
+    category TEXT NOT NULL,
+    price_inr NUMERIC NOT NULL,
+    fabric_composition TEXT,
+    fit_type TEXT,
+    description TEXT,
+    image_urls TEXT[],
+    embedding vector(384),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+);
+
+-- 3. Create HNSW vector search index
+CREATE INDEX IF NOT EXISTS products_embedding_hnsw_idx 
+ON products 
+USING hnsw (embedding vector_cosine_ops);
+
+-- 4. Create vector matching RPC function
+CREATE OR REPLACE FUNCTION search_products(
+    query_embedding vector(384),
+    match_count int DEFAULT 5,
+    max_price numeric DEFAULT NULL,
+    category_filter text DEFAULT NULL
+)
+RETURNS TABLE (
+    id UUID,
+    product_code TEXT,
+    name TEXT,
+    category TEXT,
+    price_inr NUMERIC,
+    fabric_composition TEXT,
+    fit_type TEXT,
+    description TEXT,
+    image_urls TEXT[],
+    similarity float
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        p.id,
+        p.product_code,
+        p.name,
+        p.category,
+        p.price_inr,
+        p.fabric_composition,
+        p.fit_type,
+        p.description,
+        p.image_urls,
+        1 - (p.embedding <=> query_embedding) AS similarity
+    FROM products p
+    WHERE
+        (max_price IS NULL OR p.price_inr <= max_price)
+        AND (category_filter IS NULL OR LOWER(p.category) = LOWER(category_filter))
+    ORDER BY p.embedding <=> query_embedding
+    LIMIT match_count;
+END;
+$$;
+```
+
+---
+
+## 6. How to Run All Services
+
+Open 5 separate PowerShell windows (or terminal tabs) and run each service:
+
+### Terminal 1: Ollama Server
 ```powershell
 ollama run gemma4:e2b
 ```
-*(Verify by visiting `http://localhost:11434/api/tags`)*
+*(Keep this running. Ollama loads the model into RAM with `keep_alive: 60m`.)*
 
-### Step 2: Start Python Flask AI Service (TailorVision 3D Fitting Model)
+### Terminal 2: FastAPI RAG Service (Port 8000)
+```powershell
+cd c:\Users\haide\OneDrive\Documents\Fit-Cloths\AI
+.\.venv\Scripts\Activate.ps1
+uvicorn rag_api:app --host 0.0.0.0 --port 8000
+```
+*(Verify health: `http://127.0.0.1:8000/health`)*
+
+### Terminal 3: TailorVision Measurement Engine (Port 5000)
 ```powershell
 cd c:\Users\haide\OneDrive\Documents\Fit-Cloths\tailoring-grade_anthropometric_Python_tool
 .\.venv\Scripts\Activate.ps1
 python app.py
 ```
-*(Alternatively, to run the legacy MediaPipe engine: `cd c:\Users\haide\OneDrive\Documents\Fit-Cloths\AI` and run `python app.py`)*
-*(Verify by visiting `http://127.0.0.1:5000/`)*
+*(Verify online: `http://127.0.0.1:5000/`)*
 
-### Step 3: Start Express Backend
+### Terminal 4: Node.js Express Gateway (Port 5001)
 ```powershell
 cd c:\Users\haide\OneDrive\Documents\Fit-Cloths\backend
-npm start
-# or for auto-reload during development:
 npm run dev
 ```
-*(Verify by visiting `http://localhost:5001/api/health`)*
+*(Verify status: `http://localhost:5001/api/measurements/status`)*
 
-### Step 4: Start Vite React Frontend
+### Terminal 5: Vite React Storefront (Port 5173)
 ```powershell
 cd c:\Users\haide\OneDrive\Documents\Fit-Cloths\frontend
 npm run dev
 ```
-*(Visit `http://localhost:5173` in your browser)*
+
+Open your browser and navigate to: **`http://localhost:5173`**.
 
 ---
 
-## 4. Endpoints & Complete Request Flow
+## 7. Key API Endpoints & Request Contracts
 
-### A. Connectivity Verification
-- `GET http://localhost:5001/api/health` — Checks Express backend health.
-- `GET http://localhost:5001/api/measurements/status` — Checks Express -> Flask connectivity.
+### A. Health & Status Checks
+- `GET http://localhost:5001/api/measurements/status`: Probes Express-to-Flask communication.
+- `GET http://127.0.0.1:8000/health`: Verifies RAG vector embedding service.
 
-### B. AI Measurement Prediction Flow
+### B. Body Measurement Prediction
 - **Endpoint**: `POST http://localhost:5001/api/measurements/predict`
-- **Request Type**: `multipart/form-data`
-- **Payload Fields**:
-  - `front_image`: Image file (JPEG, PNG, WebP — max 15 MB)
-  - `side_image`: Image file (JPEG, PNG, WebP — max 15 MB)
-  - `height_cm`: Decimal number between `100` and `250`
-  - `gender`: Anatomical prior (`male`, `female`, or `neutral`)
-  - `garment_type`: Target garment for ease allowance (default `traditional`)
+- **Content-Type**: `multipart/form-data`
+- **Fields**:
+  - `front_image`: Frontal body photo (JPEG, PNG, WebP)
+  - `side_image`: Side profile photo (JPEG, PNG, WebP)
+  - `height_cm`: Subject height in centimeters (e.g. `178`)
+  - `gender`: Prior (`male`, `female`, or `neutral`)
+  - `garment_type`: Garment for ease calculation (e.g. `traditional`, `suit`, `casual`)
+- **Headers (Optional)**:
+  - `X-Correlation-ID`: Trace request lifecycle across Node and Python logs.
 
-### C. Response Formats
-- **Success (HTTP 200)**:
+### C. Conversational RAG AI Agent
+- **Endpoint**: `POST http://localhost:5001/api/ai/chat?stream=true`
+- **Content-Type**: `application/json`
+- **Body**:
   ```json
   {
-    "success": true,
-    "status": "success",
-    "validation": { "front": { "accepted": true }, "side": { "accepted": true } },
-    "data": {
-      "upper_body": { "chest_circumference": 98.4, "waist_circumference": 82.1, ... },
-      "lower_body": { "inseam": 78.5, "outseam": 104.2, ... },
-      "body_proportions": { "total_height": 178.0, "shoulder_to_crotch_height": 62.4 },
-      "tailoring_recommendations": {
-        "garment_type": "traditional",
-        "chest_with_ease_cm": 104.4,
-        "waist_with_ease_cm": 86.1,
-        "collar_size_cm": 41.5
-      },
-      "measurement_quality": {
-        "status": "validated_tailoring_grade",
-        "overall_quality_score": 0.91,
-        "cross_view_consistency": 0.94,
-        "scale_method": "known_height",
-        "warnings": ["POOR_FIT_CONVERGENCE"],
-        "confidence_levels": { "chest_circumference": "HIGH", "waist_circumference": "HIGH" },
-        "uncertainties_cm": { "chest_circumference": 0.8, "waist_circumference": 1.1 }
-      }
-    },
-    "notice": "Measurements are estimated using TailorVision 3D fitting and should be verified by a tailor before garment production."
+    "message": "Recommend lightweight linen shirts under 3000",
+    "max_price": 3000,
+    "category": "Shirts"
   }
   ```
-- **Photo Validation Rejection (HTTP 422)**:
-  ```json
-  {
-    "success": false,
-    "status": "error",
-    "stage": "photo_validation",
-    "message": "Please retake the rejected photo(s).",
-    "validation": { ... },
-    "retake": {
-      "side": {
-        "reason": "View is frontal, not right-side.",
-        "retake_instruction": "Please retake the photo from the right side."
-      }
-    }
-  }
-  ```
-- **Service Unavailable (HTTP 503)**:
-  Returned if Flask or Ollama is offline.
+- **Stream Events (SSE)**:
+  - `event: token` -> Streamed text chunk from Gemma
+  - `event: products` -> Array of matching product cards
+  - `event: done` -> Final execution duration and metrics
 
 ---
 
-## 5. Common Troubleshooting Steps
+## 8. Verification & Performance Benchmarking
 
-1. **Port in use error (`EADDRINUSE: 5000`)**:
-   - Flask runs on 5000. Express must run on 5001. Ensure `PORT=5001` in `backend/.env`.
-2. **Gemma validation times out or service unavailable (503)**:
-   - Ensure Ollama is running (`ollama list` shows `gemma4:e2b`).
-   - If Ollama is cold-started, the first request may take 30–60s while the model loads into GPU/RAM.
-3. **MediaPipe Segmentation Mask C++ Abort on Windows**:
-   - MediaPipe Windows wheels (0.10.x) encounter an internal `Check failed: 1 == ChannelSize() (1 vs. 4)` when `output_segmentation_masks=True`.
-   - In `AI/model.py`, `output_segmentation_masks=False` is used, and the body silhouette is computed via OpenCV morphological thresholding, ensuring zero crashes and instant landmark extraction.
-4. **Vite Frontend cannot connect to Backend**:
-   - Check `frontend/.env` contains `VITE_API_BASE_URL=http://localhost:5001`.
+Run the included automated benchmark script to test both pipelines end-to-end:
+
+```powershell
+cd c:\Users\haide\OneDrive\Documents\Fit-Cloths
+tailoring-grade_anthropometric_Python_tool\.venv\Scripts\python.exe scratch\benchmark_end_to_end.py
+```
+
+### Expected Benchmark Results:
+- **Warm TailorVision Prediction**: `~12.4s – 13.1s` (Under the 15s threshold on CPU)
+- **Warm RAG Chat Response**: `~8.1s – 9.6s` (Under the 15s threshold)
+- **Time to First Visible Token (TTFT)**: `~0.38s` (Instant streaming response)
+
+---
+
+## 9. Troubleshooting & FAQ
+
+1. **Port In Use (`EADDRINUSE: 5000` or `5001`)**:
+   - TailorVision runs on port **5000**. Express runs on port **5001**.
+   - Check listening processes:
+     ```powershell
+     Get-NetTCPConnection -State Listen | Where-Object { $_.LocalPort -in 5000, 5001, 8000 }
+     ```
+
+2. **Ollama Streaming Shows Empty Text**:
+   - Ensure `"think": false` is present in `ollamaPayload` inside `backend/routes/ai.js`. Gemma 4 defaults to internal reasoning tokens if thinking mode is active.
+
+3. **Photo Validation Returns 422 Unprocessable Entity**:
+   - The deterministic computer vision validator requires the entire subject from head to feet to be in frame.
+   - If feet or head are cropped by the camera frame edge, the validator intentionally rejects the photo to prevent erroneous measurement scaling. Step back and ensure full body framing.
+
+4. **MediaPipe / Windows DLL Warnings**:
+   - TensorFlow Lite XNNPACK logs (`landmark_projection_calculator.cc:81`) are informational notices and do not affect inference accuracy.
