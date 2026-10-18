@@ -62,7 +62,7 @@ const SearchPage = ({ onSelectProduct, onAddToCart }) => {
                 }
             } catch (err) {
                 console.error('Fetch error:', err);
-                setError('Could not connect to backend server. Please verify backend is running on port 5000.');
+                setError('Could not connect to backend server. Please verify backend is running and reachable.');
             } finally {
                 setLoading(false);
             }
@@ -370,7 +370,7 @@ const SearchPage = ({ onSelectProduct, onAddToCart }) => {
                 {error && (
                     <div className="p-6 bg-red-50 border-2 border-red-500 text-red-700 font-mono text-xs uppercase mb-12 shadow-[3px_3px_0px_0px_rgba(239,68,68,1)] flex flex-col gap-2">
                         <span className="font-bold">[ ERROR ]: {error}</span>
-                        <span className="text-[11px] text-red-600">Tip: Check if your backend server is running in terminal with npm run dev.</span>
+                        <span className="text-[11px] text-red-600">Tip: In production, check VITE_API_BASE_URL in Vercel settings and ensure the Render backend is live.</span>
                     </div>
                 )}
 
