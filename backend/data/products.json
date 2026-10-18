@@ -1,0 +1,1404 @@
+[
+  {
+    "id": 2,
+    "product_code": "FC-FORMAL-001",
+    "name": "Midnight Navy Executive Set",
+    "category": "formal_set",
+    "target_audience": "men",
+    "description": "A timeless midnight-navy single-breasted blazer paired with a crisp white shirt, charcoal tailored trousers and a burgundy tie. Designed for interviews, office presentations and formal events. Custom-made to the customer's confirmed body measurements; no standard clothing sizes.",
+    "brand": "Fit Cloths",
+    "colors": [
+      "navy",
+      "white",
+      "charcoal",
+      "burgundy"
+    ],
+    "fabric_composition": "Wool-blend suiting concept; composition must be supplier-verified",
+    "fit_type": "custom tailored",
+    "occasion": [
+      "interview",
+      "office",
+      "business",
+      "formal"
+    ],
+    "style_tags": [
+      "classic",
+      "executive",
+      "versatile",
+      "blazer-shirt-trousers-tie-set",
+      "made-to-measure"
+    ],
+    "price_inr": 8999,
+    "image_urls": [
+      "https://images.unsplash.com/photo-1592878904946-b3cd8ae243d0?auto=format&fit=crop&w=1200&q=85"
+    ],
+    "data_source": "synthetic",
+    "is_published": false,
+    "created_at": "2026-10-14T18:35:30.681376+00:00",
+    "customization_options": {
+      "tie": {
+        "base_colour": "burgundy",
+        "pattern_options": [
+          "solid",
+          "subtle-texture"
+        ]
+      },
+      "shirt": {
+        "base_colour": "white",
+        "cuff_options": [
+          "button",
+          "French"
+        ],
+        "collar_options": [
+          "classic",
+          "spread"
+        ]
+      },
+      "blazer": {
+        "base_colour": "navy",
+        "design_notes": "notch lapel, two-button front, flap pockets"
+      },
+      "trousers": {
+        "base_colour": "charcoal",
+        "hem_options": [
+          "plain",
+          "cuffed"
+        ],
+        "front_options": [
+          "flat-front",
+          "single-pleat"
+        ]
+      },
+      "set_includes": [
+        "blazer",
+        "formal shirt",
+        "formal trousers",
+        "tie"
+      ],
+      "fit_preferences": [
+        "classic",
+        "slim",
+        "relaxed"
+      ],
+      "measurements_required": [
+        "chest",
+        "waist",
+        "hips/seat",
+        "shoulder",
+        "sleeve_length",
+        "shirt_length",
+        "trouser_waist",
+        "inseam"
+      ]
+    },
+    "tailoring_details": "Made to order. Customer body measurements and desired ease must be reviewed by the tailor before cutting. AI-generated or predicted measurements should be confirmed before production.",
+    "fabric_price_per_unit": null,
+    "image_attribution_url": "https://unsplash.com/photos/man-in-blue-suit-jacket-opJElA_rBNw"
+  },
+  {
+    "id": 3,
+    "product_code": "FC-FORMAL-002",
+    "name": "Charcoal Boardroom Set",
+    "category": "formal_set",
+    "target_audience": "men",
+    "description": "A refined charcoal blazer and matching trousers with an ice-blue shirt and navy tie. A restrained, professional combination for meetings, conferences and corporate occasions. Custom-made to the customer's confirmed body measurements; no standard clothing sizes.",
+    "brand": "Fit Cloths",
+    "colors": [
+      "charcoal",
+      "ice blue",
+      "charcoal",
+      "navy"
+    ],
+    "fabric_composition": "Woven suiting fabric concept; composition must be supplier-verified",
+    "fit_type": "custom tailored",
+    "occasion": [
+      "office",
+      "business meeting",
+      "conference"
+    ],
+    "style_tags": [
+      "professional",
+      "minimal",
+      "coordinated",
+      "blazer-shirt-trousers-tie-set",
+      "made-to-measure"
+    ],
+    "price_inr": 9499,
+    "image_urls": [
+      "https://images.unsplash.com/photo-1610189585935-f3d92154b752?auto=format&fit=crop&w=1200&q=85"
+    ],
+    "data_source": "synthetic",
+    "is_published": false,
+    "created_at": "2026-10-14T18:35:31.741492+00:00",
+    "customization_options": {
+      "tie": {
+        "base_colour": "navy",
+        "pattern_options": [
+          "solid",
+          "subtle-texture"
+        ]
+      },
+      "shirt": {
+        "base_colour": "ice blue",
+        "cuff_options": [
+          "button",
+          "French"
+        ],
+        "collar_options": [
+          "classic",
+          "spread"
+        ]
+      },
+      "blazer": {
+        "base_colour": "charcoal",
+        "design_notes": "notch lapel, clean shoulder, flat-front trousers"
+      },
+      "trousers": {
+        "base_colour": "charcoal",
+        "hem_options": [
+          "plain",
+          "cuffed"
+        ],
+        "front_options": [
+          "flat-front",
+          "single-pleat"
+        ]
+      },
+      "set_includes": [
+        "blazer",
+        "formal shirt",
+        "formal trousers",
+        "tie"
+      ],
+      "fit_preferences": [
+        "classic",
+        "slim",
+        "relaxed"
+      ],
+      "measurements_required": [
+        "chest",
+        "waist",
+        "hips/seat",
+        "shoulder",
+        "sleeve_length",
+        "shirt_length",
+        "trouser_waist",
+        "inseam"
+      ]
+    },
+    "tailoring_details": "Made to order. Customer body measurements and desired ease must be reviewed by the tailor before cutting. AI-generated or predicted measurements should be confirmed before production.",
+    "fabric_price_per_unit": null,
+    "image_attribution_url": "https://unsplash.com/photos/man-in-white-shirt-and-black-blazer-yY8WTRV7YAg"
+  },
+  {
+    "id": 4,
+    "product_code": "FC-FORMAL-003",
+    "name": "Royal Blue Celebration Set",
+    "category": "formal_set",
+    "target_audience": "men",
+    "description": "A vivid royal-blue blazer with a white shirt, black trousers and silver tie for celebratory formalwear, presentations and evening functions. Custom-made to the customer's confirmed body measurements; no standard clothing sizes.",
+    "brand": "Fit Cloths",
+    "colors": [
+      "royal blue",
+      "white",
+      "black",
+      "silver"
+    ],
+    "fabric_composition": "Woven suiting fabric concept; composition must be supplier-verified",
+    "fit_type": "custom tailored",
+    "occasion": [
+      "celebration",
+      "presentation",
+      "evening event"
+    ],
+    "style_tags": [
+      "modern",
+      "bold",
+      "smart",
+      "blazer-shirt-trousers-tie-set",
+      "made-to-measure"
+    ],
+    "price_inr": 9999,
+    "image_urls": [
+      "https://images.unsplash.com/photo-1558273665-5c494fee2f7d?auto=format&fit=crop&w=1200&q=85"
+    ],
+    "data_source": "synthetic",
+    "is_published": false,
+    "created_at": "2026-10-14T18:35:32.007427+00:00",
+    "customization_options": {
+      "tie": {
+        "base_colour": "silver",
+        "pattern_options": [
+          "solid",
+          "subtle-texture"
+        ]
+      },
+      "shirt": {
+        "base_colour": "white",
+        "cuff_options": [
+          "button",
+          "French"
+        ],
+        "collar_options": [
+          "classic",
+          "spread"
+        ]
+      },
+      "blazer": {
+        "base_colour": "royal blue",
+        "design_notes": "single-breasted blazer, slim silhouette, plain tie"
+      },
+      "trousers": {
+        "base_colour": "black",
+        "hem_options": [
+          "plain",
+          "cuffed"
+        ],
+        "front_options": [
+          "flat-front",
+          "single-pleat"
+        ]
+      },
+      "set_includes": [
+        "blazer",
+        "formal shirt",
+        "formal trousers",
+        "tie"
+      ],
+      "fit_preferences": [
+        "classic",
+        "slim",
+        "relaxed"
+      ],
+      "measurements_required": [
+        "chest",
+        "waist",
+        "hips/seat",
+        "shoulder",
+        "sleeve_length",
+        "shirt_length",
+        "trouser_waist",
+        "inseam"
+      ]
+    },
+    "tailoring_details": "Made to order. Customer body measurements and desired ease must be reviewed by the tailor before cutting. AI-generated or predicted measurements should be confirmed before production.",
+    "fabric_price_per_unit": null,
+    "image_attribution_url": "https://unsplash.com/photos/man-in-grey-suit-set-_6cg-mJfg5Y"
+  },
+  {
+    "id": 5,
+    "product_code": "FC-FORMAL-004",
+    "name": "Earth-Tone Modern Formal Set",
+    "category": "formal_set",
+    "target_audience": "men",
+    "description": "An earthy brown blazer, cream shirt, dark-brown trousers and muted olive tie create a warm contemporary look suited to daytime events and creative workplaces. Custom-made to the customer's confirmed body measurements; no standard clothing sizes.",
+    "brand": "Fit Cloths",
+    "colors": [
+      "brown",
+      "cream",
+      "dark brown",
+      "olive"
+    ],
+    "fabric_composition": "Textured suiting fabric concept; composition must be supplier-verified",
+    "fit_type": "custom tailored",
+    "occasion": [
+      "day event",
+      "creative office",
+      "semi-formal"
+    ],
+    "style_tags": [
+      "earthy",
+      "contemporary",
+      "warm",
+      "blazer-shirt-trousers-tie-set",
+      "made-to-measure"
+    ],
+    "price_inr": 9299,
+    "image_urls": [
+      "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=1200&q=85"
+    ],
+    "data_source": "synthetic",
+    "is_published": false,
+    "created_at": "2026-10-14T18:35:32.212784+00:00",
+    "customization_options": {
+      "tie": {
+        "base_colour": "olive",
+        "pattern_options": [
+          "solid",
+          "subtle-texture"
+        ]
+      },
+      "shirt": {
+        "base_colour": "cream",
+        "cuff_options": [
+          "button",
+          "French"
+        ],
+        "collar_options": [
+          "classic",
+          "spread"
+        ]
+      },
+      "blazer": {
+        "base_colour": "brown",
+        "design_notes": "notch lapel, subtle texture, coordinated separates"
+      },
+      "trousers": {
+        "base_colour": "dark brown",
+        "hem_options": [
+          "plain",
+          "cuffed"
+        ],
+        "front_options": [
+          "flat-front",
+          "single-pleat"
+        ]
+      },
+      "set_includes": [
+        "blazer",
+        "formal shirt",
+        "formal trousers",
+        "tie"
+      ],
+      "fit_preferences": [
+        "classic",
+        "slim",
+        "relaxed"
+      ],
+      "measurements_required": [
+        "chest",
+        "waist",
+        "hips/seat",
+        "shoulder",
+        "sleeve_length",
+        "shirt_length",
+        "trouser_waist",
+        "inseam"
+      ]
+    },
+    "tailoring_details": "Made to order. Customer body measurements and desired ease must be reviewed by the tailor before cutting. AI-generated or predicted measurements should be confirmed before production.",
+    "fabric_price_per_unit": null,
+    "image_attribution_url": "https://unsplash.com/license"
+  },
+  {
+    "id": 6,
+    "product_code": "FC-FORMAL-005",
+    "name": "Black-Tie Inspired Evening Set",
+    "category": "formal_set",
+    "target_audience": "men",
+    "description": "A sharp black blazer and trousers with a white shirt and black tie. A versatile evening combination for receptions, formal dinners and ceremonies; not represented as a certified tuxedo. Custom-made to the customer's confirmed body measurements; no standard clothing sizes.",
+    "brand": "Fit Cloths",
+    "colors": [
+      "black",
+      "white",
+      "black",
+      "black"
+    ],
+    "fabric_composition": "Formal suiting fabric concept; composition must be supplier-verified",
+    "fit_type": "custom tailored",
+    "occasion": [
+      "reception",
+      "formal dinner",
+      "ceremony"
+    ],
+    "style_tags": [
+      "evening",
+      "monochrome",
+      "elegant",
+      "blazer-shirt-trousers-tie-set",
+      "made-to-measure"
+    ],
+    "price_inr": 11999,
+    "image_urls": [
+      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85"
+    ],
+    "data_source": "synthetic",
+    "is_published": false,
+    "created_at": "2026-10-14T18:35:32.413944+00:00",
+    "customization_options": {
+      "tie": {
+        "base_colour": "black",
+        "pattern_options": [
+          "solid",
+          "subtle-texture"
+        ]
+      },
+      "shirt": {
+        "base_colour": "white",
+        "cuff_options": [
+          "button",
+          "French"
+        ],
+        "collar_options": [
+          "classic",
+          "spread"
+        ]
+      },
+      "blazer": {
+        "base_colour": "black",
+        "design_notes": "black notch lapel, clean front, monochrome styling"
+      },
+      "trousers": {
+        "base_colour": "black",
+        "hem_options": [
+          "plain",
+          "cuffed"
+        ],
+        "front_options": [
+          "flat-front",
+          "single-pleat"
+        ]
+      },
+      "set_includes": [
+        "blazer",
+        "formal shirt",
+        "formal trousers",
+        "tie"
+      ],
+      "fit_preferences": [
+        "classic",
+        "slim",
+        "relaxed"
+      ],
+      "measurements_required": [
+        "chest",
+        "waist",
+        "hips/seat",
+        "shoulder",
+        "sleeve_length",
+        "shirt_length",
+        "trouser_waist",
+        "inseam"
+      ]
+    },
+    "tailoring_details": "Made to order. Customer body measurements and desired ease must be reviewed by the tailor before cutting. AI-generated or predicted measurements should be confirmed before production.",
+    "fabric_price_per_unit": null,
+    "image_attribution_url": "https://unsplash.com/license"
+  },
+  {
+    "id": 7,
+    "product_code": "FC-FORMAL-006",
+    "name": "Light Grey Day-Formal Set",
+    "category": "formal_set",
+    "target_audience": "men",
+    "description": "A light-grey blazer, white shirt, medium-grey trousers and navy tie form a bright, polished outfit for daytime weddings, interviews and warm-weather events. Custom-made to the customer's confirmed body measurements; no standard clothing sizes.",
+    "brand": "Fit Cloths",
+    "colors": [
+      "light grey",
+      "white",
+      "medium grey",
+      "navy"
+    ],
+    "fabric_composition": "Lightweight suiting fabric concept; composition must be supplier-verified",
+    "fit_type": "custom tailored",
+    "occasion": [
+      "day wedding",
+      "interview",
+      "daytime event"
+    ],
+    "style_tags": [
+      "light",
+      "clean",
+      "classic",
+      "blazer-shirt-trousers-tie-set",
+      "made-to-measure"
+    ],
+    "price_inr": 8799,
+    "image_urls": [
+      "https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=1200&q=85"
+    ],
+    "data_source": "synthetic",
+    "is_published": false,
+    "created_at": "2026-10-14T18:35:32.62516+00:00",
+    "customization_options": {
+      "tie": {
+        "base_colour": "navy",
+        "pattern_options": [
+          "solid",
+          "subtle-texture"
+        ]
+      },
+      "shirt": {
+        "base_colour": "white",
+        "cuff_options": [
+          "button",
+          "French"
+        ],
+        "collar_options": [
+          "classic",
+          "spread"
+        ]
+      },
+      "blazer": {
+        "base_colour": "light grey",
+        "design_notes": "light grey blazer, navy accent, tailored trousers"
+      },
+      "trousers": {
+        "base_colour": "medium grey",
+        "hem_options": [
+          "plain",
+          "cuffed"
+        ],
+        "front_options": [
+          "flat-front",
+          "single-pleat"
+        ]
+      },
+      "set_includes": [
+        "blazer",
+        "formal shirt",
+        "formal trousers",
+        "tie"
+      ],
+      "fit_preferences": [
+        "classic",
+        "slim",
+        "relaxed"
+      ],
+      "measurements_required": [
+        "chest",
+        "waist",
+        "hips/seat",
+        "shoulder",
+        "sleeve_length",
+        "shirt_length",
+        "trouser_waist",
+        "inseam"
+      ]
+    },
+    "tailoring_details": "Made to order. Customer body measurements and desired ease must be reviewed by the tailor before cutting. AI-generated or predicted measurements should be confirmed before production.",
+    "fabric_price_per_unit": null,
+    "image_attribution_url": "https://unsplash.com/license"
+  },
+  {
+    "id": 8,
+    "product_code": "FC-FORMAL-007",
+    "name": "Pinstripe Power Set",
+    "category": "formal_set",
+    "target_audience": "men",
+    "description": "A navy pinstripe blazer with white shirt, matching dark trousers and a restrained red tie. Designed for customers who want a confident, traditional business look. Custom-made to the customer's confirmed body measurements; no standard clothing sizes.",
+    "brand": "Fit Cloths",
+    "colors": [
+      "navy pinstripe",
+      "white",
+      "navy",
+      "red"
+    ],
+    "fabric_composition": "Pinstripe suiting fabric concept; composition must be supplier-verified",
+    "fit_type": "custom tailored",
+    "occasion": [
+      "business",
+      "presentation",
+      "conference"
+    ],
+    "style_tags": [
+      "pinstripe",
+      "heritage",
+      "confident",
+      "blazer-shirt-trousers-tie-set",
+      "made-to-measure"
+    ],
+    "price_inr": 10999,
+    "image_urls": [
+      "https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?auto=format&fit=crop&w=1200&q=85"
+    ],
+    "data_source": "synthetic",
+    "is_published": false,
+    "created_at": "2026-10-14T18:35:32.920412+00:00",
+    "customization_options": {
+      "tie": {
+        "base_colour": "red",
+        "pattern_options": [
+          "solid",
+          "subtle-texture"
+        ]
+      },
+      "shirt": {
+        "base_colour": "white",
+        "cuff_options": [
+          "button",
+          "French"
+        ],
+        "collar_options": [
+          "classic",
+          "spread"
+        ]
+      },
+      "blazer": {
+        "base_colour": "navy pinstripe",
+        "design_notes": "fine pinstripe, classic lapel, red accent tie"
+      },
+      "trousers": {
+        "base_colour": "navy",
+        "hem_options": [
+          "plain",
+          "cuffed"
+        ],
+        "front_options": [
+          "flat-front",
+          "single-pleat"
+        ]
+      },
+      "set_includes": [
+        "blazer",
+        "formal shirt",
+        "formal trousers",
+        "tie"
+      ],
+      "fit_preferences": [
+        "classic",
+        "slim",
+        "relaxed"
+      ],
+      "measurements_required": [
+        "chest",
+        "waist",
+        "hips/seat",
+        "shoulder",
+        "sleeve_length",
+        "shirt_length",
+        "trouser_waist",
+        "inseam"
+      ]
+    },
+    "tailoring_details": "Made to order. Customer body measurements and desired ease must be reviewed by the tailor before cutting. AI-generated or predicted measurements should be confirmed before production.",
+    "fabric_price_per_unit": null,
+    "image_attribution_url": "https://unsplash.com/license"
+  },
+  {
+    "id": 9,
+    "product_code": "FC-FORMAL-008",
+    "name": "Olive Contemporary Formal Set",
+    "category": "formal_set",
+    "target_audience": "men",
+    "description": "An olive blazer with a pale-blue shirt, charcoal trousers and deep-green tie. A distinctive but balanced combination for modern offices and smart formal occasions. Custom-made to the customer's confirmed body measurements; no standard clothing sizes.",
+    "brand": "Fit Cloths",
+    "colors": [
+      "olive",
+      "pale blue",
+      "charcoal",
+      "dark green"
+    ],
+    "fabric_composition": "Textured suiting fabric concept; composition must be supplier-verified",
+    "fit_type": "custom tailored",
+    "occasion": [
+      "office",
+      "networking",
+      "smart formal"
+    ],
+    "style_tags": [
+      "contemporary",
+      "distinctive",
+      "earth-tone",
+      "blazer-shirt-trousers-tie-set",
+      "made-to-measure"
+    ],
+    "price_inr": 9799,
+    "image_urls": [
+      "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=1200&q=85"
+    ],
+    "data_source": "synthetic",
+    "is_published": false,
+    "created_at": "2026-10-14T18:35:33.226329+00:00",
+    "customization_options": {
+      "tie": {
+        "base_colour": "dark green",
+        "pattern_options": [
+          "solid",
+          "subtle-texture"
+        ]
+      },
+      "shirt": {
+        "base_colour": "pale blue",
+        "cuff_options": [
+          "button",
+          "French"
+        ],
+        "collar_options": [
+          "classic",
+          "spread"
+        ]
+      },
+      "blazer": {
+        "base_colour": "olive",
+        "design_notes": "notch lapel, tonal tie, charcoal contrast trousers"
+      },
+      "trousers": {
+        "base_colour": "charcoal",
+        "hem_options": [
+          "plain",
+          "cuffed"
+        ],
+        "front_options": [
+          "flat-front",
+          "single-pleat"
+        ]
+      },
+      "set_includes": [
+        "blazer",
+        "formal shirt",
+        "formal trousers",
+        "tie"
+      ],
+      "fit_preferences": [
+        "classic",
+        "slim",
+        "relaxed"
+      ],
+      "measurements_required": [
+        "chest",
+        "waist",
+        "hips/seat",
+        "shoulder",
+        "sleeve_length",
+        "shirt_length",
+        "trouser_waist",
+        "inseam"
+      ]
+    },
+    "tailoring_details": "Made to order. Customer body measurements and desired ease must be reviewed by the tailor before cutting. AI-generated or predicted measurements should be confirmed before production.",
+    "fabric_price_per_unit": null,
+    "image_attribution_url": "https://unsplash.com/license"
+  },
+  {
+    "id": 10,
+    "product_code": "FC-FORMAL-009",
+    "name": "Burgundy Occasion Set",
+    "category": "formal_set",
+    "target_audience": "men",
+    "description": "A burgundy blazer with a crisp white shirt, black trousers and black tie. An expressive occasion outfit for receptions, celebrations and evening gatherings. Custom-made to the customer's confirmed body measurements; no standard clothing sizes.",
+    "brand": "Fit Cloths",
+    "colors": [
+      "burgundy",
+      "white",
+      "black",
+      "black"
+    ],
+    "fabric_composition": "Occasion suiting fabric concept; composition must be supplier-verified",
+    "fit_type": "custom tailored",
+    "occasion": [
+      "reception",
+      "celebration",
+      "evening"
+    ],
+    "style_tags": [
+      "statement",
+      "occasion",
+      "bold",
+      "blazer-shirt-trousers-tie-set",
+      "made-to-measure"
+    ],
+    "price_inr": 11499,
+    "image_urls": [
+      "https://images.unsplash.com/photo-1593032465175-481ac7f401a0?auto=format&fit=crop&w=1200&q=85"
+    ],
+    "data_source": "synthetic",
+    "is_published": false,
+    "created_at": "2026-10-14T18:35:33.440553+00:00",
+    "customization_options": {
+      "tie": {
+        "base_colour": "black",
+        "pattern_options": [
+          "solid",
+          "subtle-texture"
+        ]
+      },
+      "shirt": {
+        "base_colour": "white",
+        "cuff_options": [
+          "button",
+          "French"
+        ],
+        "collar_options": [
+          "classic",
+          "spread"
+        ]
+      },
+      "blazer": {
+        "base_colour": "burgundy",
+        "design_notes": "burgundy jacket, black contrast pieces, clean styling"
+      },
+      "trousers": {
+        "base_colour": "black",
+        "hem_options": [
+          "plain",
+          "cuffed"
+        ],
+        "front_options": [
+          "flat-front",
+          "single-pleat"
+        ]
+      },
+      "set_includes": [
+        "blazer",
+        "formal shirt",
+        "formal trousers",
+        "tie"
+      ],
+      "fit_preferences": [
+        "classic",
+        "slim",
+        "relaxed"
+      ],
+      "measurements_required": [
+        "chest",
+        "waist",
+        "hips/seat",
+        "shoulder",
+        "sleeve_length",
+        "shirt_length",
+        "trouser_waist",
+        "inseam"
+      ]
+    },
+    "tailoring_details": "Made to order. Customer body measurements and desired ease must be reviewed by the tailor before cutting. AI-generated or predicted measurements should be confirmed before production.",
+    "fabric_price_per_unit": null,
+    "image_attribution_url": "https://unsplash.com/license"
+  },
+  {
+    "id": 11,
+    "product_code": "FC-FORMAL-010",
+    "name": "Sand and Navy Summer Formal Set",
+    "category": "formal_set",
+    "target_audience": "men",
+    "description": "A sand-coloured blazer, white shirt, navy trousers and blue tie create a lighter formal look for daytime functions, business-casual offices and warm-weather occasions. Custom-made to the customer's confirmed body measurements; no standard clothing sizes.",
+    "brand": "Fit Cloths",
+    "colors": [
+      "sand",
+      "white",
+      "navy",
+      "blue"
+    ],
+    "fabric_composition": "Lightweight suiting fabric concept; composition must be supplier-verified",
+    "fit_type": "custom tailored",
+    "occasion": [
+      "day event",
+      "business casual",
+      "summer function"
+    ],
+    "style_tags": [
+      "lightweight-look",
+      "fresh",
+      "versatile",
+      "blazer-shirt-trousers-tie-set",
+      "made-to-measure"
+    ],
+    "price_inr": 9299,
+    "image_urls": [
+      "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=1200&q=85"
+    ],
+    "data_source": "synthetic",
+    "is_published": false,
+    "created_at": "2026-10-14T18:35:33.636418+00:00",
+    "customization_options": {
+      "tie": {
+        "base_colour": "blue",
+        "pattern_options": [
+          "solid",
+          "subtle-texture"
+        ]
+      },
+      "shirt": {
+        "base_colour": "white",
+        "cuff_options": [
+          "button",
+          "French"
+        ],
+        "collar_options": [
+          "classic",
+          "spread"
+        ]
+      },
+      "blazer": {
+        "base_colour": "sand",
+        "design_notes": "sand blazer, navy contrast trousers, blue tie"
+      },
+      "trousers": {
+        "base_colour": "navy",
+        "hem_options": [
+          "plain",
+          "cuffed"
+        ],
+        "front_options": [
+          "flat-front",
+          "single-pleat"
+        ]
+      },
+      "set_includes": [
+        "blazer",
+        "formal shirt",
+        "formal trousers",
+        "tie"
+      ],
+      "fit_preferences": [
+        "classic",
+        "slim",
+        "relaxed"
+      ],
+      "measurements_required": [
+        "chest",
+        "waist",
+        "hips/seat",
+        "shoulder",
+        "sleeve_length",
+        "shirt_length",
+        "trouser_waist",
+        "inseam"
+      ]
+    },
+    "tailoring_details": "Made to order. Customer body measurements and desired ease must be reviewed by the tailor before cutting. AI-generated or predicted measurements should be confirmed before production.",
+    "fabric_price_per_unit": null,
+    "image_attribution_url": "https://unsplash.com/license"
+  },
+  {
+    "id": 13,
+    "product_code": "FC-ETHNIC-001",
+    "name": "Banarasi Red & Gold Saree Set",
+    "category": "indian_traditional_wear",
+    "target_audience": "women",
+    "description": "Red Banarasi-inspired saree with a coordinated blouse; blouse stitching can be made to measure.",
+    "brand": "Fit Cloths",
+    "colors": [
+      "red",
+      "gold",
+      "green"
+    ],
+    "fabric_composition": "Silk blend (synthetic concept; verify supplier)",
+    "fit_type": "made-to-measure traditional wear",
+    "occasion": [
+      "festive",
+      "traditional"
+    ],
+    "style_tags": [
+      "saree",
+      "Banarasi-inspired",
+      "festive"
+    ],
+    "price_inr": 7499,
+    "image_urls": [
+      "https://res.cloudinary.com/jerrick/image/upload/c_scale%2Cf_jpg%2Cq_auto/66dedc87999921001e2b5694.jpg"
+    ],
+    "data_source": "synthetic",
+    "is_published": false,
+    "created_at": "2026-10-15T05:50:02.443641+00:00",
+    "customization_options": {
+      "sleeves": [
+        "short",
+        "elbow",
+        "full"
+      ],
+      "fall_and_pico": true,
+      "blouse_stitching": true
+    },
+    "tailoring_details": "Saree drape with made-to-measure blouse stitching.",
+    "fabric_price_per_unit": null,
+    "image_attribution_url": "https://vocal.media/writers/10-ethnic-attires-every-woman-loves-to-wear"
+  },
+  {
+    "id": 14,
+    "product_code": "FC-ETHNIC-002",
+    "name": "Emerald Border Silk-Look Saree",
+    "category": "indian_traditional_wear",
+    "target_audience": "women",
+    "description": "Cream-and-gold silk-look saree concept with a deep emerald border and matching blouse option.",
+    "brand": "Fit Cloths",
+    "colors": [
+      "cream",
+      "gold",
+      "emerald"
+    ],
+    "fabric_composition": "Silk blend (synthetic concept; verify supplier)",
+    "fit_type": "made-to-measure traditional wear",
+    "occasion": [
+      "festive",
+      "traditional"
+    ],
+    "style_tags": [
+      "saree",
+      "contrast border",
+      "classic"
+    ],
+    "price_inr": 8299,
+    "image_urls": [
+      "https://res.cloudinary.com/jerrick/image/upload/c_scale%2Cf_jpg%2Cq_auto/66dedc87999921001e2b5694.jpg"
+    ],
+    "data_source": "synthetic",
+    "is_published": false,
+    "created_at": "2026-10-15T05:50:02.756167+00:00",
+    "customization_options": {
+      "sleeves": [
+        "short",
+        "elbow",
+        "full"
+      ],
+      "fall_and_pico": true,
+      "blouse_stitching": true
+    },
+    "tailoring_details": "Image is a general saree reference, not guaranteed to match this exact concept.",
+    "fabric_price_per_unit": null,
+    "image_attribution_url": "https://vocal.media/writers/10-ethnic-attires-every-woman-loves-to-wear"
+  },
+  {
+    "id": 15,
+    "product_code": "FC-ETHNIC-003",
+    "name": "Rani Pink Embroidered Lehenga Choli",
+    "category": "indian_traditional_wear",
+    "target_audience": "women",
+    "description": "Festive rani-pink lehenga concept with embroidered choli and matching dupatta.",
+    "brand": "Fit Cloths",
+    "colors": [
+      "rani pink",
+      "gold"
+    ],
+    "fabric_composition": "Georgette/net blend (synthetic concept; verify supplier)",
+    "fit_type": "made-to-measure traditional wear",
+    "occasion": [
+      "festive",
+      "traditional"
+    ],
+    "style_tags": [
+      "lehenga",
+      "choli",
+      "embroidered",
+      "festive"
+    ],
+    "price_inr": 12499,
+    "image_urls": [
+      "https://imgmedia.lbb.in/media/2019/07/5d1c80e70958210f31358b6a_1562149095177.jpg"
+    ],
+    "data_source": "synthetic",
+    "is_published": false,
+    "created_at": "2026-10-15T05:50:03.241338+00:00",
+    "customization_options": {
+      "skirt_length": "custom",
+      "choli_stitching": true,
+      "dupatta_included": true
+    },
+    "tailoring_details": "Made-to-measure choli and skirt; verify embroidery and lining.",
+    "fabric_price_per_unit": null,
+    "image_attribution_url": "https://baggout.com/blog/2023/05/22/best-designer-boutiques-in-ahmedabad/"
+  },
+  {
+    "id": 16,
+    "product_code": "FC-ETHNIC-004",
+    "name": "Ivory Anarkali Suit with Dupatta",
+    "category": "indian_traditional_wear",
+    "target_audience": "women",
+    "description": "Ivory Anarkali-style suit concept with delicate embroidery and a coordinated dupatta.",
+    "brand": "Fit Cloths",
+    "colors": [
+      "ivory",
+      "cream",
+      "gold"
+    ],
+    "fabric_composition": "Georgette blend (synthetic concept; verify supplier)",
+    "fit_type": "made-to-measure traditional wear",
+    "occasion": [
+      "festive",
+      "traditional"
+    ],
+    "style_tags": [
+      "Anarkali",
+      "salwar suit",
+      "embroidered"
+    ],
+    "price_inr": 6899,
+    "image_urls": [
+      "https://images.pexels.com/photos/6739340/pexels-photo-6739340.jpeg"
+    ],
+    "data_source": "synthetic",
+    "is_published": false,
+    "created_at": "2026-10-15T05:50:03.424963+00:00",
+    "customization_options": {
+      "length": "custom",
+      "sleeves": [
+        "short",
+        "three-quarter",
+        "full"
+      ],
+      "dupatta_included": true
+    },
+    "tailoring_details": "Suit length and sleeves tailored to customer measurements.",
+    "fabric_price_per_unit": null,
+    "image_attribution_url": "https://www.pexels.com/photo/a-woman-wearing-traditional-clothing-6739340/"
+  },
+  {
+    "id": 17,
+    "product_code": "FC-ETHNIC-005",
+    "name": "Mustard and Maroon Ghagra Choli",
+    "category": "indian_traditional_wear",
+    "target_audience": "women",
+    "description": "Festive ghagra-choli concept with a mustard skirt, maroon choli and coordinating dupatta.",
+    "brand": "Fit Cloths",
+    "colors": [
+      "mustard",
+      "maroon",
+      "gold"
+    ],
+    "fabric_composition": "Cotton-silk blend (synthetic concept; verify supplier)",
+    "fit_type": "made-to-measure traditional wear",
+    "occasion": [
+      "festive",
+      "traditional"
+    ],
+    "style_tags": [
+      "ghagra choli",
+      "regional ethnic",
+      "festive"
+    ],
+    "price_inr": 5999,
+    "image_urls": [
+      "https://orchidfashionzone.com/wp-content/uploads/2024/12/NORT.jpg"
+    ],
+    "data_source": "synthetic",
+    "is_published": false,
+    "created_at": "2026-10-15T05:50:03.58635+00:00",
+    "customization_options": {
+      "skirt_length": "custom",
+      "choli_stitching": true,
+      "dupatta_included": true
+    },
+    "tailoring_details": "Broad traditional-attire reference; replace with an exact product image before publishing.",
+    "fabric_price_per_unit": null,
+    "image_attribution_url": "https://orchidfashionzone.com/vibrant-traditions-exploring-north-indias-rich-cultural-attire/"
+  },
+  {
+    "id": 18,
+    "product_code": "FC-ETHNIC-006",
+    "name": "Ivory Embroidered Sherwani Set",
+    "category": "indian_traditional_wear",
+    "target_audience": "men",
+    "description": "Ivory sherwani concept with subtle gold embroidery and churidar-style bottoms.",
+    "brand": "Fit Cloths",
+    "colors": [
+      "ivory",
+      "gold",
+      "cream"
+    ],
+    "fabric_composition": "Jacquard blend (synthetic concept; verify supplier)",
+    "fit_type": "made-to-measure traditional wear",
+    "occasion": [
+      "festive",
+      "traditional",
+      "ceremonial"
+    ],
+    "style_tags": [
+      "sherwani",
+      "groomwear",
+      "embroidered"
+    ],
+    "price_inr": 13999,
+    "image_urls": [
+      "https://megandajey.com/images/Wardrobe%20Guide/haldi.png"
+    ],
+    "data_source": "synthetic",
+    "is_published": false,
+    "created_at": "2026-10-15T05:50:03.906359+00:00",
+    "customization_options": {
+      "collar": [
+        "bandhgala"
+      ],
+      "bottoms": [
+        "churidar",
+        "straight pant"
+      ],
+      "embroidery": [
+        "subtle",
+        "medium"
+      ]
+    },
+    "tailoring_details": "Sherwani and bottoms made to customer measurements; confirm fabric and embellishment.",
+    "fabric_price_per_unit": null,
+    "image_attribution_url": "https://megandajey.com/wardrobe-guide"
+  },
+  {
+    "id": 19,
+    "product_code": "FC-ETHNIC-007",
+    "name": "Sage Green Kurta Pajama Set",
+    "category": "indian_traditional_wear",
+    "target_audience": "men",
+    "description": "Sage-green straight kurta paired with off-white pajama trousers for understated festive wear.",
+    "brand": "Fit Cloths",
+    "colors": [
+      "sage green",
+      "off-white"
+    ],
+    "fabric_composition": "Cotton blend (synthetic concept; verify supplier)",
+    "fit_type": "made-to-measure traditional wear",
+    "occasion": [
+      "festive",
+      "traditional",
+      "ceremonial"
+    ],
+    "style_tags": [
+      "kurta pajama",
+      "minimal",
+      "festive"
+    ],
+    "price_inr": 3499,
+    "image_urls": [
+      "https://toptentravel.com.vn/Data/Sites/1/News/5159/nhung-trang-phuc-truyen-thong-an-do-ma-co-the-ban-chua-biet-13.jpg"
+    ],
+    "data_source": "synthetic",
+    "is_published": false,
+    "created_at": "2026-10-15T05:50:04.346284+00:00",
+    "customization_options": {
+      "collar": [
+        "mandarin",
+        "short band"
+      ],
+      "bottoms": [
+        "pajama",
+        "churidar"
+      ],
+      "sleeves": [
+        "full",
+        "three-quarter"
+      ]
+    },
+    "tailoring_details": "Kurta and pajama stitched to measurements; verify fabric weight and shrinkage.",
+    "fabric_price_per_unit": null,
+    "image_attribution_url": "https://toptentravel.com.vn/nhung-trang-phuc-truyen-thong-an-do-ma-co-the-ban-chua-biet"
+  },
+  {
+    "id": 20,
+    "product_code": "FC-ETHNIC-008",
+    "name": "Royal Blue Bandhgala Achkan Set",
+    "category": "indian_traditional_wear",
+    "target_audience": "men",
+    "description": "Structured royal-blue bandhgala/achkan concept with matching trousers for formal Indian occasions.",
+    "brand": "Fit Cloths",
+    "colors": [
+      "royal blue",
+      "navy"
+    ],
+    "fabric_composition": "Suiting blend (synthetic concept; verify supplier)",
+    "fit_type": "made-to-measure traditional wear",
+    "occasion": [
+      "festive",
+      "traditional",
+      "ceremonial"
+    ],
+    "style_tags": [
+      "bandhgala",
+      "achkan",
+      "formal ethnic"
+    ],
+    "price_inr": 9999,
+    "image_urls": [
+      "https://www.ashieshnx.in/images/facade/mahal-counter-and-bardi-central-entrance-102-x-98-2.webp"
+    ],
+    "data_source": "synthetic",
+    "is_published": false,
+    "created_at": "2026-10-15T05:50:04.498662+00:00",
+    "customization_options": {
+      "collar": [
+        "bandhgala"
+      ],
+      "trouser_fit": [
+        "straight",
+        "tapered"
+      ],
+      "button_style": [
+        "covered",
+        "metal-look"
+      ]
+    },
+    "tailoring_details": "Reference image shows multiple ethnic outfits; replace with an exact matching image.",
+    "fabric_price_per_unit": null,
+    "image_attribution_url": "https://www.ashieshnx.in/"
+  },
+  {
+    "id": 21,
+    "product_code": "FC-ETHNIC-009",
+    "name": "Cream Kurta with Dhoti Set",
+    "category": "indian_traditional_wear",
+    "target_audience": "men",
+    "description": "Cream kurta paired with a traditional dhoti-style lower garment for ceremonies and cultural events.",
+    "brand": "Fit Cloths",
+    "colors": [
+      "cream",
+      "ivory"
+    ],
+    "fabric_composition": "Cotton or cotton-silk blend (synthetic concept; verify supplier)",
+    "fit_type": "made-to-measure traditional wear",
+    "occasion": [
+      "festive",
+      "traditional",
+      "ceremonial"
+    ],
+    "style_tags": [
+      "kurta dhoti",
+      "ceremonial",
+      "traditional"
+    ],
+    "price_inr": 4299,
+    "image_urls": [
+      "https://megandajey.com/images/Wardrobe%20Guide/haldi.png"
+    ],
+    "data_source": "synthetic",
+    "is_published": false,
+    "created_at": "2026-10-15T05:50:04.755891+00:00",
+    "customization_options": {
+      "embroidery": [
+        "none",
+        "subtle"
+      ],
+      "kurta_length": "custom",
+      "lower_garment": [
+        "stitched dhoti",
+        "unstitched dhoti"
+      ]
+    },
+    "tailoring_details": "Specify stitched versus unstitched dhoti; kurta made to measurements.",
+    "fabric_price_per_unit": null,
+    "image_attribution_url": "https://megandajey.com/wardrobe-guide"
+  },
+  {
+    "id": 22,
+    "product_code": "FC-ETHNIC-010",
+    "name": "Maroon Kurta with Nehru Jacket",
+    "category": "indian_traditional_wear",
+    "target_audience": "men",
+    "description": "Maroon printed kurta concept paired with a contrasting Nehru jacket and pajama trousers.",
+    "brand": "Fit Cloths",
+    "colors": [
+      "maroon",
+      "beige",
+      "gold"
+    ],
+    "fabric_composition": "Cotton blend and jacquard-look jacket (synthetic concept; verify supplier)",
+    "fit_type": "made-to-measure traditional wear",
+    "occasion": [
+      "festive",
+      "traditional",
+      "ceremonial"
+    ],
+    "style_tags": [
+      "Nehru jacket",
+      "kurta set",
+      "layered ethnic"
+    ],
+    "price_inr": 5799,
+    "image_urls": [
+      "https://megandajey.com/images/Wardrobe%20Guide/haldi.png"
+    ],
+    "data_source": "synthetic",
+    "is_published": false,
+    "created_at": "2026-10-15T05:50:05.003851+00:00",
+    "customization_options": {
+      "bottoms": [
+        "pajama",
+        "churidar"
+      ],
+      "sleeves": [
+        "full",
+        "three-quarter"
+      ],
+      "jacket_included": true
+    },
+    "tailoring_details": "All stitched pieces made to measurements; use accurate product photography before publishing.",
+    "fabric_price_per_unit": null,
+    "image_attribution_url": "https://megandajey.com/wardrobe-guide"
+  }
+]
