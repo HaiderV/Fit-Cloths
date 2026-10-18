@@ -1,4 +1,5 @@
 const express = require('express');
+const crypto = require('crypto');
 const router = express.Router();
 const multer = require('multer');
 
@@ -140,6 +141,9 @@ router.post('/predict', (req, res) => {
             const garmentType = (req.body.garment_type || 'traditional').trim().toLowerCase();
 
             // 4. Construct multipart form data for Flask
+            const correlationId = req.headers['x-correlation-id'] || crypto.randomUUID();
+            const expressStartTime = performance.now();
+
             const formData = new FormData();
             formData.append(
                 'front_image',
@@ -155,30 +159,35 @@ router.post('/predict', (req, res) => {
             formData.append('gender', gender);
             formData.append('garment_type', garmentType);
 
-            // 5. Forward to Flask service
+            // 5. Forward to Flask service with correlation ID and keep-alive
             const flaskBaseUrl = process.env.FLASK_API_URL || process.env.AI_SERVICE_URL || 'http://127.0.0.1:5000';
             const flaskEndpoint = `${flaskBaseUrl}/api/predict-measurements`;
 
-            // Timeout set to 360s (6 minutes) to accommodate 3D fitting and vision inference
+            // Timeout set to 60s (fast deterministic pipeline runs in ~10-15s)
             let flaskRes;
             try {
                 flaskRes = await fetch(flaskEndpoint, {
                     method: 'POST',
+                    headers: {
+                        'X-Correlation-ID': correlationId,
+                    },
                     body: formData,
-                    signal: AbortSignal.timeout(360000),
+                    signal: AbortSignal.timeout(60000),
                 });
             } catch (networkErr) {
                 if (networkErr.name === 'TimeoutError' || networkErr.name === 'AbortError') {
                     return res.status(504).json({
                         success: false,
                         status: 'error',
+                        correlation_id: correlationId,
                         message: 'Measurement analysis timed out while waiting for AI service.',
                     });
                 }
                 return res.status(503).json({
                     success: false,
                     status: 'error',
-                    message: 'AI measurement service is currently offline or unreachable. Ensure Flask and Ollama are running.',
+                    correlation_id: correlationId,
+                    message: 'AI measurement service is currently offline or unreachable. Ensure Flask is running.',
                     detail: networkErr.message,
                 });
             }
@@ -193,10 +202,16 @@ router.post('/predict', (req, res) => {
                 responseData = { message: text };
             }
 
+            const totalExpressMs = Math.round(performance.now() - expressStartTime);
+
             // Forward the HTTP status code from Flask (e.g. 200, 422 for photo validation, 400, 503)
             return res.status(flaskRes.status).json({
                 success: flaskRes.ok,
                 ...responseData,
+                express_meta: {
+                    correlation_id: correlationId,
+                    express_roundtrip_ms: totalExpressMs,
+                },
             });
 
         } catch (serverErr) {

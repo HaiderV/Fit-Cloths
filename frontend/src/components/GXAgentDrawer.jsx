@@ -79,9 +79,12 @@ const GXAgentDrawer = () => {
         const maxPrice = priceMatch ? parseFloat(priceMatch[1]) : undefined;
 
         try {
-            const res = await fetch(`${API_BASE_URL}/api/ai/chat`, {
+            const res = await fetch(`${API_BASE_URL}/api/ai/chat?stream=true`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'text/event-stream, application/json'
+                },
                 body: JSON.stringify({
                     message: userPrompt.trim(),
                     max_price: maxPrice,
@@ -93,18 +96,86 @@ const GXAgentDrawer = () => {
                 throw new Error(errData.error || `HTTP error ${res.status}`);
             }
 
-            const data = await res.json();
+            const contentType = res.headers.get('content-type') || '';
+            const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-            const gxReply = {
-                id: Date.now() + 1,
-                sender: 'gx',
-                text: data.reply || "I couldn't generate a response for that query.",
-                products: Array.isArray(data.products) ? data.products : [],
-                model: data.model || 'gemma',
-                time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-            };
+            if (contentType.includes('text/event-stream') && res.body) {
+                const replyId = Date.now() + 1;
+                let replyText = '';
+                let replyProducts = [];
 
-            setMessages((prev) => [...prev, gxReply]);
+                // Create initial placeholder message
+                setMessages((prev) => [
+                    ...prev,
+                    {
+                        id: replyId,
+                        sender: 'gx',
+                        text: '',
+                        products: [],
+                        model: 'gemma',
+                        time: currentTime,
+                    },
+                ]);
+
+                const reader = res.body.getReader();
+                const decoder = new TextDecoder('utf-8');
+                let buffer = '';
+
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+
+                    buffer += decoder.decode(value, { stream: true });
+                    const lines = buffer.split('\n');
+                    buffer = lines.pop();
+
+                    for (const line of lines) {
+                        if (line.startsWith('data: ')) {
+                            try {
+                                const event = JSON.parse(line.slice(6));
+                                if (event.type === 'token') {
+                                    replyText += event.text;
+                                    setMessages((prev) =>
+                                        prev.map((m) =>
+                                            m.id === replyId ? { ...m, text: replyText } : m
+                                        )
+                                    );
+                                } else if (event.type === 'products') {
+                                    replyProducts = event.products || [];
+                                    setMessages((prev) =>
+                                        prev.map((m) =>
+                                            m.id === replyId ? { ...m, products: replyProducts } : m
+                                        )
+                                    );
+                                }
+                            } catch {}
+                        }
+                    }
+                }
+
+                // If text is still empty after stream ends, ensure fallback is displayed
+                if (!replyText.trim()) {
+                    const fallback = replyProducts.length > 0
+                        ? "Here are our top recommended bespoke garments tailored to your request:"
+                        : "Hello! Welcome to Fit Cloths. How can I assist you with custom fit or styling today?";
+                    setMessages((prev) =>
+                        prev.map((m) =>
+                            m.id === replyId ? { ...m, text: fallback, products: replyProducts } : m
+                        )
+                    );
+                }
+            } else {
+                const data = await res.json();
+                const gxReply = {
+                    id: Date.now() + 1,
+                    sender: 'gx',
+                    text: data.reply || "I couldn't generate a response for that query.",
+                    products: Array.isArray(data.products) ? data.products : [],
+                    model: data.model || 'gemma',
+                    time: currentTime,
+                };
+                setMessages((prev) => [...prev, gxReply]);
+            }
         } catch (err) {
             console.error('GX RAG Agent Error:', err);
             const errorReply = {
@@ -265,7 +336,14 @@ const GXAgentDrawer = () => {
                                         : 'bg-white text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
                                 }`}
                             >
-                                <p className="leading-relaxed whitespace-pre-wrap">{msg.text}</p>
+                                {msg.sender === 'gx' && !msg.text ? (
+                                    <div className="flex items-center gap-2 text-neutral-500 font-mono text-[11px] py-0.5">
+                                        <span className="w-2 h-2 rounded-full bg-orange-500 animate-ping"></span>
+                                        <span className="tracking-wider">CURATING STYLING ADVICE...</span>
+                                    </div>
+                                ) : (
+                                    <p className="leading-relaxed whitespace-pre-wrap">{msg.text}</p>
+                                )}
 
                                 {/* Cool Product Recommendations Section with Direct Links */}
                                 {Array.isArray(msg.products) && msg.products.length > 0 && (

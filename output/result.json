@@ -1,0 +1,132 @@
+{
+  "body_model_type": "smplx",
+  "gender": "male",
+  "smplx_parameters": {
+    "betas": [
+      0.32544681429862976,
+      0.2606404721736908,
+      -0.33414846658706665,
+      0.2210731953382492,
+      -0.10073571652173996,
+      0.17543570697307587,
+      -0.0648927316069603,
+      0.005702925845980644,
+      0.09423241764307022,
+      0.0378594771027565
+    ],
+    "pose_neutralized": true,
+    "gender": "male"
+  },
+  "measurements_cm": {
+    "head_circumference": 57.03,
+    "neck_circumference": 39.86,
+    "shoulder_to_crotch_height": 66.05000305175781,
+    "chest_circumference": 107.97,
+    "waist_circumference": 95.56,
+    "hip_circumference": 104.28,
+    "wrist_right_circumference": 18.19,
+    "bicep_right_circumference": 31.57,
+    "forearm_right_circumference": 27.95,
+    "arm_right_length": 55.290000915527344,
+    "inside_leg_height": 76.5,
+    "thigh_left_circumference": 51.73,
+    "calf_left_circumference": 37.36,
+    "ankle_left_circumference": 24.88,
+    "shoulder_breadth": 35.959999084472656,
+    "height": 176.07000732421875
+  },
+  "measurement_confidence": {
+    "head_circumference": "HIGH",
+    "neck_circumference": "HIGH",
+    "shoulder_to_crotch_height": "HIGH",
+    "chest_circumference": "HIGH",
+    "waist_circumference": "HIGH",
+    "hip_circumference": "HIGH",
+    "wrist_right_circumference": "HIGH",
+    "bicep_right_circumference": "HIGH",
+    "forearm_right_circumference": "HIGH",
+    "arm_right_length": "HIGH",
+    "inside_leg_height": "HIGH",
+    "thigh_left_circumference": "HIGH",
+    "calf_left_circumference": "HIGH",
+    "ankle_left_circumference": "HIGH",
+    "shoulder_breadth": "HIGH",
+    "height": "HIGH"
+  },
+  "uncertainty_cm": {
+    "head_circumference": 0.0,
+    "neck_circumference": 0.0,
+    "shoulder_to_crotch_height": 0.0,
+    "chest_circumference": 0.0,
+    "waist_circumference": 0.0,
+    "hip_circumference": 0.0,
+    "wrist_right_circumference": 0.0,
+    "bicep_right_circumference": 0.0,
+    "forearm_right_circumference": 0.0,
+    "arm_right_length": 0.0,
+    "inside_leg_height": 0.0,
+    "thigh_left_circumference": 0.0,
+    "calf_left_circumference": 0.0,
+    "ankle_left_circumference": 0.0,
+    "shoulder_breadth": 0.0,
+    "height": 0.0
+  },
+  "scale": {
+    "mode": "known_height",
+    "scale_factor": 1.00873,
+    "confidence": 0.97,
+    "model_height_cm": 176.46,
+    "anchor_height_cm": 178.0
+  },
+  "quality_scores": {
+    "image_quality_front": 0.171,
+    "image_quality_side": 0.31,
+    "pose_quality_front": 0.863,
+    "pose_quality_side": 0.863,
+    "fit_quality": 0.0,
+    "scale_quality": 0.97,
+    "overall": 0.48,
+    "cross_view_consistency": 0.988
+  },
+  "validation_report": {
+    "passed": true,
+    "front_image_ok": true,
+    "side_image_ok": true,
+    "reasons": [],
+    "front_blur_score": 171.25,
+    "side_blur_score": 309.8,
+    "front_resolution": [
+      721,
+      1280
+    ],
+    "side_resolution": [
+      721,
+      1280
+    ]
+  },
+  "warnings": [
+    "POOR_FIT_CONVERGENCE"
+  ],
+  "tailoring_recommendations": {
+    "garment_type": "traditional",
+    "collar_size_cm": 42.4,
+    "chest_with_ease_cm": 120.0,
+    "waist_with_ease_cm": 109.6,
+    "hip_with_ease_cm": 120.3,
+    "rise_cm": -10.399999618530273,
+    "sleeve_length_cm": 57.29999923706055,
+    "inseam_cm": 79.5,
+    "shoulder_seam_cm": 18.0,
+    "ease_table": {
+      "chest_circumference": 12.0,
+      "waist_circumference": 14.0,
+      "hip_circumference": 16.0,
+      "shoulder_breadth": 1.0,
+      "neck_circumference": 2.5,
+      "arm_right_length": 2.0,
+      "inside_leg_height": 3.0,
+      "thigh_left_circumference": 8.0
+    }
+  },
+  "debug_artifact_paths": {}
+}
